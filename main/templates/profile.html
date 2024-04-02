@@ -1,0 +1,39 @@
+{% extends 'layout/main.html' %}
+
+{% block content %}
+    {% load static %}
+
+    <div class="container">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+        <div class="col">
+            <div class="card shadow-sm" style="padding: 10px">
+                <img src="{% static '' %}{{ user_profile.image }}" class="img-fluid" alt="Картинка отсутствует">
+                <h2 class="align-items-center">{{ user_profile.familia }} {{ user_profile.name }}</h2>
+                <div class="card-body">
+                    <p class="card-text"><strong>Город:</strong> {{ user_profile.city }}</p>
+                    <p class="card-text"><strong>Дата рождения:</strong>{{ user_profile.birth_date }}</p>
+                    <strong>О себе:</strong>
+                    <p class="card-text">{{ user_profile.lid }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary"><a
+                                    href="{% url 'Update' %}" class='nav-link link-body-emphasis'>Изменить информацию о
+                                себе</a>
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary"><a
+                                    href="{% url 'UpdatePassword' %}" class='nav-link link-body-emphasis'>Изменить
+                                пароль</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+ 
+

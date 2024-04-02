@@ -1,0 +1,97 @@
+{% extends 'layout/main.html' %}
+
+{% block content %}
+    {% load static %}
+
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <p>
+                <label>Введите название книги</label>
+                <input type="text" name="title">
+            </p>
+            <p>
+                <label>Выберите жанр</label>
+                <select name="genre">
+                    <option value="1">Не выбрано</option>
+                    {% for genre in genres %}
+                        <option value="{{ genre.id }}">{{ genre }}</option>
+                    {% endfor %}
+                </select>
+            </p>
+            <p>
+                <label>Выберите издательство</label>
+                <select name="publishing_house">
+                    <option value="1">Не выбрано</option>
+                    {% for print in prints %}
+                        <option value="{{ print.id }}">{{ print }}</option>
+                    {% endfor %}
+                </select>
+            </p>
+            <p>
+                <label>Выберите автора</label>
+                <select name="authors">
+                    <option value="1">Не выбрано</option>
+                    {% for author in authors %}
+                        <option value="{{ author.id }}">{{ author }}</option>
+                    {% endfor %}
+                </select>
+            </p>
+            <p>
+                <label>Выберите язык</label>
+                <select name="languages">
+                    <option value="1">Не выбрано</option>
+                    {% for language in languages %}
+                        <option value="{{ language.id }}">{{ language }}</option>
+                    {% endfor %}
+                </select>
+            </p>
+            <button type="submit" name="filter">Найти</button>
+        </form>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+            {% if books != null %}
+                {% for book in books %}
+
+
+                    <div class="col">
+                        <div class="card shadow-sm" style="padding: 10px">
+                            <h2 class="align-items-center">{{ book.title }}</h2>
+                            <div class="card-body">
+                                <p class="card-text">{{ book.description }}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"><a
+                                                href="{% url 'OneBook' book.id %}" class='nav-link link-body-emphasis'>Подробнее</a>
+                                        </button>
+                                        {% if user.is_superuser %}
+                                            <button type="button" class="btn btn-sm btn-outline-secondary btn-danger"><a
+                                                    href="{% url 'Delete' book.id %}"
+                                                    class='nav-link link-body-emphasis text-light'>Удалить</a>
+                                            </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="col">
+                    <div class="card shadow-sm" style="padding: 10px">
+                        <h2 class="align-items-center">КНИГИ ОТСУТСТВУЮТ</h2>
+                        <div class="card-body">
+                            <p class="card-text"></p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+ 
+

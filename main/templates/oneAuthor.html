@@ -1,0 +1,29 @@
+{% extends 'layout/main.html' %}
+
+{% block content %}
+    {% load static %}
+
+    <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+            <div class="col">
+                <div class="card shadow-sm" style="padding: 10px">
+                    <h2 class="align-items-center">{{ author.fio }}</h2>
+                    <div class="card-body">
+
+                        <p class="card-text"><strong>Дата рождения:</strong> {{ author.dateBirth }}</p>
+                        <p class="card-text"><strong>Дата смерти:</strong> {{ author.dateDeath }}</p>
+                        <p class="card-text">{{ author.lid }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+ 
+

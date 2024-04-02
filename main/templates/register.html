@@ -1,0 +1,38 @@
+{% extends 'layout/main.html' %}
+
+{% block content %}
+    {% load static %}
+    <div class="container">
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Логин</label>
+                {{ form.username }}
+                <p class="text-danger">{{ form.username.errors }}<p>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Email</label>
+                {{ form.email }}
+                <p class="text-danger">{{ form.email.errors }}<p>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Пароль</label>
+                {{ form.password1 }}
+                <p class="text-danger">{{ form.password2.errors }}<p>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Подтверждение пароля</label>
+                {{ form.password2 }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </form>
+
+    </div>
+{% endblock %}
+ 
+

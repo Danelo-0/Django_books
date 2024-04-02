@@ -1,0 +1,33 @@
+{% extends 'layout/main.html' %}
+
+{% block content %}
+    {% load static %}
+
+    <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+            <div class="col">
+                <div class="card shadow-sm" style="padding: 10px">
+                    <h2 class="align-items-center">{{ book.title }}</h2>
+                    <div class="card-body">
+
+                        <p class="card-text"><strong>Автор:</strong> {{ author }}</p>
+                        <p class="card-text"><strong>Язык:</strong> {{ language }}</p>
+                        <p class="card-text"><strong>Жанр:</strong> {{ book.genre }}</p>
+                        <p class="card-text"><strong>Издательство:</strong> {{ book.publishing_house.title }}</p>
+                        <p class="card-text"><strong>ISBN:</strong> {{ book.isbn }}</p>
+                        <p class="card-text"><strong>Год выпуска:</strong> {{ book.date }}</p>
+                        <p class="card-text">{{ book.description }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+ 
+

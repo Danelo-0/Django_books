@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    <title>Читай-город</title>
+</head>
+
+<header class="p-3 mb-3 border-bottom">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <img src="{% static 'images/1.png' %}" width="170" height="50" alt="Нет картинки">
+        </div>
+    </div>
+</header>
+
+<div class="d-flex flex-column flex-shrink-0 p-4 bg-body-tertiary" style="width: 280px;">
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li>
+            <a href="{% url 'Index' %}" class="nav-link link-body-emphasis">
+                Главная
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'AllBook' %}" class="nav-link link-body-emphasis">
+                Все книги
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'AllAuthor' %}" class="nav-link link-body-emphasis">
+                Все авторы
+            </a>
+        </li>
+        {% if not user.is_authenticated %}
+            <li>
+                <a href="{% url 'Register' %}" class="nav-link link-body-emphasis">
+                    Регистрация
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'Login' %}" class="nav-link link-body-emphasis">
+                    Войти
+                </a>
+            </li>
+            {% else %}
+            {% if not user.is_staff and  user.is_superuser %}
+            <li>
+                <a href="{% url 'Profile' %}" class="nav-link link-body-emphasis">
+                    Личный кабинет
+                </a>
+            </li>
+                {% endif %}
+            <li>
+                <a href="{% url 'Logout' %}" class="nav-link link-body-emphasis">
+                    Выйти
+                </a>
+            </li>
+        {% endif %}
+        <li>
+            {% if user.is_staff or  user.is_superuser %}
+                <a href="{% url 'AddShow' %}" class="nav-link link-body-emphasis">
+                    Добавить книгу
+                </a>
+            {% endif %}
+        </li>
+    </ul>
+</div>
+
+<div class="container">
+    <h2>{{ title }}</h2>
+</div>
+<br>
+
+{% block content %}
+{% endblock %}
+
+
+
+<div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+            <span class="text-muted">© 2023 Читай-город</span>
+        </div>
+
+        <div class="twelve columns footer">
+            <a href="" class="text-muted" style="font-size:16px; margin-right:15px" title="twitter">Twitter</a>
+            <a href="" class="text-muted" style="font-size:16px; margin-right:15px" title="facebook">Facebook</a>
+            <a href="" class="text-muted" style="font-size:16px; margin-right:15px" title="pinterest">Pinterest</a>
+            <a href="" class="text-muted" style="font-size:16px" title="instagram">Instagram</a>
+        </div>
+    </footer>
+</div>
+<script src="{% static 'bootstrap.bundle.js' %}"></script>
+</body>
+</html>

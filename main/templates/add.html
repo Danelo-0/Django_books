@@ -1,0 +1,55 @@
+{% extends 'layout/main.html' %}
+
+{% block content %}
+    {% load static %}
+    <div class="container">
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Название книги</label>
+                {{ form.title }}
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Автор</label>
+                {{ form.author }}
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Язык</label>
+                {{ form.language }}
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Издательство</label>
+                {{ form.publishing_house }}
+            </div>
+
+             <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Жанр</label>
+                 {{ form.genre }}
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">ISBN</label>
+                {{ form.isbn }}
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Дата выпуска</label>
+                {{ form.date }}
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Описание книги</label>
+                {{ form.description}}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </form>
+
+    </div>
+{% endblock %}
+ 
+

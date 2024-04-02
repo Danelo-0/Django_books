@@ -1,0 +1,45 @@
+{% extends 'layout/main.html' %}
+
+{% block content %}
+    {% load static %}
+    <div class="container">
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Фамилия</label>
+                {{ form.familia }}
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Имя</label>
+                {{ form.name }}
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Город</label>
+                {{ form.city }}
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Дата рождения</label>
+                {{ form.birth_date }}
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Фото</label>
+                {{ form.image }}
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">О себе</label>
+                {{ form.lid }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </form>
+
+    </div>
+{% endblock %}
+ 
+
